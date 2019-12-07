@@ -17,13 +17,16 @@ import java.util.List;
 /**
  * excel工具类
  */
-public class ExcelUtil<T> {
+public final class ExcelUtil<T> {
 
     /**
      * 导出
-     *
      * @param clz 实体类对象
+     * @param list 需要导出的实体类对象集合
+     * @param sheetName 表名
+     * @param sheetSize 多少个sheet
      * @param out 输出流
+     * @param isDemo 是否是demo
      */
     public boolean exportExcel(Class<T> clz,List<T> list, String sheetName, int sheetSize,OutputStream out,boolean isDemo) {
         Field[] allFields = clz.getDeclaredFields();// 得到所有定义字段
@@ -51,13 +54,11 @@ public class ExcelUtil<T> {
             workbook.setSheetName(index, sheetName + index);// 设置工作表的名称.
             HSSFRow row;
             HSSFCell cell;// 产生单元格
-
             row = sheet.createRow(0);// 产生一行
             // 写入各个字段的列头名称
             for (int i = 0; i < fields.size(); i++) {
                 Field field = fields.get(i);
-                Excel attr = field
-                        .getAnnotation(Excel.class);
+                Excel attr = field.getAnnotation(Excel.class);
                 int col = getExcelCol(attr.column());// 获得列号
                 cell = row.createCell(col);// 创建列
                 row.setRowStyle(cellStyle2);
@@ -73,7 +74,6 @@ public class ExcelUtil<T> {
 
                 }
             }
-
             int startNo = index * sheetSize;
             int endNo = Math.min(startNo + sheetSize, list.size());
             int nullColumn = 500;//在原有数据上新添nullColumn条空数据
@@ -135,16 +135,15 @@ public class ExcelUtil<T> {
     }
 
     /***
-     * 导入excel文件
-     * @param clz 实体类对象
-     * @param filePath 文件地址
-     * @return true or false
+     * 导入
+     * @param clz 接收导入的实体类对象
+     * @param sheetName 指定工作簿中的表名
+     * @param filePath 需要导入的文件地址
      */
     public boolean importExcel(Class<T> clz, String sheetName, String filePath) {
 
         List<T> list = new ArrayList<>();
         try {
-            filePath = "D:/极光推送账号.xls";
             // 获取文件
             File file = new File(filePath);
             FileInputStream fInputStream = new FileInputStream(file);

@@ -27,6 +27,10 @@ public class RunApp {
             if (i<=0) break;
             i--;
         }
-        lcInfoExcelUtil.exportExcel(LcInfo.class, list,"lc账号列表", 999,new FileOutputStream(new File("D:\\第一次.xls")), false);
+        lcInfoExcelUtil.exportExcel(LcInfo.class,
+                list,
+                "lc账号列表",
+                999,
+                new FileOutputStream(new File("D:\\第一次.xls")), true);
     }
 }
