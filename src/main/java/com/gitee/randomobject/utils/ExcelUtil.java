@@ -1,5 +1,6 @@
 package com.gitee.randomobject.utils;
 
+import com.alibaba.fastjson.JSONObject;
 import com.gitee.randomobject.annotation.Excel;
 import jxl.Cell;
 import jxl.Sheet;
@@ -7,17 +8,22 @@ import jxl.Workbook;
 import org.apache.poi.hssf.usermodel.*;
 import org.apache.poi.ss.usermodel.CellType;
 import org.apache.poi.ss.util.CellRangeAddressList;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.*;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.concurrent.PriorityBlockingQueue;
 
 /**
  * excel工具类
  */
 public final class ExcelUtil<T> {
+
+    private Logger log = LoggerFactory.getLogger(ExcelUtil.class);
 
     /**
      * 导出
@@ -29,6 +35,7 @@ public final class ExcelUtil<T> {
      * @param isDemo 是否是demo
      */
     public boolean exportExcel(Class<T> clz,List<T> list, String sheetName, int sheetSize,OutputStream out,boolean isDemo) {
+        log.info("[导出excel]:clz={},list={},sheetName={},sheetSize={},isDemo={}",clz,list,sheetName,sheetSize,isDemo);
         Field[] allFields = clz.getDeclaredFields();// 得到所有定义字段
         List<Field> fields = new ArrayList<>();
         // 得到所有field并存放到一个list中.
@@ -129,7 +136,7 @@ public final class ExcelUtil<T> {
             return true;
         } catch (IOException e) {
             e.printStackTrace();
-            System.out.println("Output is closed ");
+           log.debug("[导出excel出现异常]:信息={}",e.getMessage());
             return false;
         }
     }
@@ -142,6 +149,7 @@ public final class ExcelUtil<T> {
      */
     public boolean importExcel(Class<T> clz, String sheetName, String filePath) {
 
+        log.info("[excel导入]:clz={},sheetName={},filePath={}",clz,sheetName,filePath);
         List<T> list = new ArrayList<>();
         try {
             // 获取文件
@@ -213,12 +221,9 @@ public final class ExcelUtil<T> {
                     list.add(entity);
                 }
             }
-
-            list.stream().forEach(s ->
-                    System.out.println(s)
-            );
         } catch (Exception e) {
             e.printStackTrace();
+            log.debug("[导入excel出现异常]:信息={}",e.getMessage());
         }
 
         return false;
