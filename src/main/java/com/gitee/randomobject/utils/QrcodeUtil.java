@@ -20,16 +20,14 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * @tag 二维码工具
- * @author peipe
- * @version 1.0
+ * 二维码工具
  */
-public class QrcodeUtil  {
+public final class QrcodeUtil  {
 
     private static final Logger log = LoggerFactory.getLogger(QrcodeUtil.class);
 
     /**
-     * @brief 创建二维码
+     *  创建二维码
      * @param map
      * <p></br>
      * 传递的参数，都是key--value的形式</br>
@@ -83,7 +81,7 @@ public class QrcodeUtil  {
     }
 
     /**
-     * @brief 创建二维码
+     * 创建二维码
      * @param map
      * <p></br>
      * 传递的参数，都是key--value的形式</br>
@@ -92,7 +90,6 @@ public class QrcodeUtil  {
      * String content 需要生成的内容</br>
      * EncodeHintType {@link com.google.zxing.EncodeHintType} 纠错等级、边距等配置信息</br>
      * </p>
-     * @return 返回文件流
      */
     public static void createQrcode(Map<String, Object> map,OutputStream out){
         log.info("[创建二维码]:map={}", JSONObject.toJSONString(map));
