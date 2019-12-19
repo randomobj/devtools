@@ -8,8 +8,7 @@ import com.google.zxing.client.j2se.MatrixToImageWriter;
 import com.google.zxing.common.BitMatrix;
 import com.google.zxing.common.HybridBinarizer;
 import com.google.zxing.qrcode.decoder.ErrorCorrectionLevel;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
@@ -22,9 +21,10 @@ import java.util.Map;
 /**
  * 二维码工具
  */
+@Slf4j
 public final class QrcodeUtil  {
 
-    private static final Logger log = LoggerFactory.getLogger(QrcodeUtil.class);
+//    private static final Logger log = LoggerFactory.getLogger(QrcodeUtil.class);
 
     /**
      *  创建二维码
