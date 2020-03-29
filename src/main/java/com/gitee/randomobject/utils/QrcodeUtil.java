@@ -9,6 +9,8 @@ import com.google.zxing.common.BitMatrix;
 import com.google.zxing.common.HybridBinarizer;
 import com.google.zxing.qrcode.decoder.ErrorCorrectionLevel;
 import lombok.extern.slf4j.Slf4j;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
@@ -24,7 +26,7 @@ import java.util.Map;
 @Slf4j
 public final class QrcodeUtil  {
 
-//    private static final Logger log = LoggerFactory.getLogger(QrcodeUtil.class);
+    private static final Logger log = LoggerFactory.getLogger(QrcodeUtil.class);
 
     /**
      *  创建二维码
