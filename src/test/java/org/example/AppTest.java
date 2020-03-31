@@ -21,10 +21,16 @@ import cn.hutool.log.LogFactory;
 import com.gitee.randomobject.aspect.Man;
 import com.gitee.randomobject.aspect.ManSimpleAspect;
 import com.gitee.randomobject.aspect.Person;
+import com.gitee.randomobject.giffactory.Captcha;
+import com.gitee.randomobject.giffactory.GifCaptcha;
+import com.gitee.randomobject.giffactory.SpecCaptcha;
 import org.junit.Before;
 import org.junit.Test;
 
 import java.awt.*;
+import java.io.ByteArrayOutputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.security.KeyPair;
 import java.util.Date;
 import java.util.concurrent.CompletionService;
@@ -123,5 +129,17 @@ public class AppTest {
     public void testAspect(){
         Person proxy = ProxyUtil.proxy(new Man(), ManSimpleAspect.class);
         proxy.eat("苹果");
+    }
+
+    @Test
+    public void testGif() throws FileNotFoundException {
+        Captcha captcha = new SpecCaptcha(150,40,5);// png格式验证码
+        captcha.out(new FileOutputStream("D:/1.png"));
+        captcha = new GifCaptcha(150,40,5);//   gif格式动画验证码
+        ByteArrayOutputStream os = new ByteArrayOutputStream();
+        captcha.out(os);
+        byte[] bytes = os.toByteArray();
+        System.out.println(captcha.text());
+        System.out.println(Base64.encode(bytes));
     }
 }
