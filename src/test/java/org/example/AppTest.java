@@ -20,8 +20,6 @@ import com.gitee.randomobject.aspect.ManSimpleAspect;
 import com.gitee.randomobject.aspect.Person;
 import com.gitee.randomobject.captcha.GifCaptcha;
 import com.gitee.randomobject.captcha.VerifUtil;
-import com.sun.image.codec.jpeg.JPEGCodec;
-import com.sun.image.codec.jpeg.JPEGImageEncoder;
 import org.junit.Test;
 
 import java.io.FileNotFoundException;
@@ -43,7 +41,6 @@ public class AppTest {
 
     @Test
     public void shouldAnswerWithTrue() throws FileNotFoundException {
-        JPEGImageEncoder jpegEncoder = JPEGCodec.createJPEGEncoder(new FileOutputStream("D/1.png"));
     }
 
     @Test
