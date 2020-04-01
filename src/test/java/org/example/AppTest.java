@@ -1,19 +1,16 @@
 package org.example;
 
 import cn.hutool.aop.ProxyUtil;
-import cn.hutool.aop.aspects.SimpleAspect;
 import cn.hutool.bloomfilter.BitMapBloomFilter;
 import cn.hutool.core.codec.Base64;
 import cn.hutool.core.convert.Convert;
-import cn.hutool.core.img.ImgUtil;
-import cn.hutool.core.io.FileUtil;
-import cn.hutool.core.io.IoUtil;
 import cn.hutool.core.thread.ThreadUtil;
 import cn.hutool.core.util.StrUtil;
 import cn.hutool.crypto.SecureUtil;
 import cn.hutool.crypto.asymmetric.KeyType;
 import cn.hutool.crypto.asymmetric.RSA;
 import cn.hutool.crypto.digest.DigestUtil;
+import cn.hutool.http.HttpUtil;
 import cn.hutool.json.JSONObject;
 import cn.hutool.json.JSONUtil;
 import cn.hutool.log.Log;
@@ -24,7 +21,6 @@ import com.gitee.randomobject.aspect.Person;
 import com.gitee.randomobject.giffactory.Captcha;
 import com.gitee.randomobject.giffactory.GifCaptcha;
 import com.gitee.randomobject.giffactory.SpecCaptcha;
-import org.junit.Before;
 import org.junit.Test;
 
 import java.awt.*;
@@ -33,11 +29,11 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.security.KeyPair;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.concurrent.CompletionService;
-import java.util.concurrent.ExecutorService;
 
 import static org.junit.Assert.assertTrue;
-
 
 /**
  * Unit test for simple App.
@@ -68,6 +64,12 @@ public class AppTest {
 //        System.out.println(execute.body());
 //        String s = HttpUtil.get("https://www.baidu.com");
 ////        System.out.println(s);
+
+        Map<String, Object> paramMap = new HashMap<>();
+        paramMap.put("pageNum", 1);
+        paramMap.put("pageSize", 30);
+        String post = HttpUtil.post("http://courage.cqscrb.top/admin/game/querySchoolCityLeague", paramMap);
+        System.out.println(post);
         log.info("[开始测试]:你好:{}", new Date());
     }
 
@@ -115,27 +117,27 @@ public class AppTest {
         //结果为："\\u6211\\u662f\\u4e00\\u4e2a\\u5c0f\\u5c0f\\u7684\\u53ef\\u7231\\u7684\\u5b57\\u7b26\\u4e32"
         String unicode = Convert.strToUnicode(a);
         System.out.println(unicode);
-         //结果为："我是一个小小的可爱的字符串"
+        //结果为："我是一个小小的可爱的字符串"
         String raw = Convert.unicodeToStr(unicode);
         System.out.println(raw);
     }
 
     @Test
-    public void testThreadPool(){
+    public void testThreadPool() {
         CompletionService<Object> objectCompletionService = ThreadUtil.newCompletionService();
     }
 
     @Test
-    public void testAspect(){
+    public void testAspect() {
         Person proxy = ProxyUtil.proxy(new Man(), ManSimpleAspect.class);
         proxy.eat("苹果");
     }
 
     @Test
     public void testGif() throws FileNotFoundException {
-        Captcha captcha = new SpecCaptcha(150,40,5);// png格式验证码
+        Captcha captcha = new SpecCaptcha(150, 40, 5);// png格式验证码
         captcha.out(new FileOutputStream("D:/1.png"));
-        captcha = new GifCaptcha(150,40,5);//   gif格式动画验证码
+        captcha = new GifCaptcha(150, 40, 5);//   gif格式动画验证码
         ByteArrayOutputStream os = new ByteArrayOutputStream();
         captcha.out(os);
         byte[] bytes = os.toByteArray();
@@ -143,3 +145,4 @@ public class AppTest {
         System.out.println(Base64.encode(bytes));
     }
 }
+

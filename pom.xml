@@ -5,7 +5,7 @@
 
     <groupId>com.gitee.randomobject</groupId>
     <artifactId>devtools</artifactId>
-    <version>1.0.4</version>
+    <version>1.0.4-SNAPSHOT</version>
 
     <name>devtools</name>
     <url>https://github.com/randomobj/devtools</url>
@@ -90,7 +90,6 @@
             <artifactId>hutool-all</artifactId>
             <version>5.2.4</version>
         </dependency>
-
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
