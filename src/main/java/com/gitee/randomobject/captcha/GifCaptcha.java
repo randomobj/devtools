@@ -1,10 +1,13 @@
-package com.gitee.randomobject.giffactory;
+package com.gitee.randomobject.captcha;
+
+import cn.hutool.core.codec.Base64;
 
 import java.awt.AlphaComposite;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 
@@ -62,6 +65,13 @@ public class GifCaptcha extends Captcha {
             }
         }
 
+    }
+
+    @Override
+    public String toBase64() {
+        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+        out(byteArrayOutputStream);
+        return Base64.encode(byteArrayOutputStream.toByteArray());
     }
 
     /**

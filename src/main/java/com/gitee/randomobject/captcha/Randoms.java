@@ -1,4 +1,4 @@
-package com.gitee.randomobject.giffactory;
+package com.gitee.randomobject.captcha;
 
 import java.util.Random;
 

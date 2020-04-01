@@ -18,13 +18,12 @@ import cn.hutool.log.LogFactory;
 import com.gitee.randomobject.aspect.Man;
 import com.gitee.randomobject.aspect.ManSimpleAspect;
 import com.gitee.randomobject.aspect.Person;
-import com.gitee.randomobject.giffactory.Captcha;
-import com.gitee.randomobject.giffactory.GifCaptcha;
-import com.gitee.randomobject.giffactory.SpecCaptcha;
+import com.gitee.randomobject.captcha.GifCaptcha;
+import com.gitee.randomobject.captcha.VerifUtil;
+import com.sun.image.codec.jpeg.JPEGCodec;
+import com.sun.image.codec.jpeg.JPEGImageEncoder;
 import org.junit.Test;
 
-import java.awt.*;
-import java.io.ByteArrayOutputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.security.KeyPair;
@@ -43,9 +42,8 @@ public class AppTest {
     private final Log log = LogFactory.create().createLog(AppTest.class);
 
     @Test
-    public void shouldAnswerWithTrue() {
-        assertTrue(true);
-        System.out.println("test  before");
+    public void shouldAnswerWithTrue() throws FileNotFoundException {
+        JPEGImageEncoder jpegEncoder = JPEGCodec.createJPEGEncoder(new FileOutputStream("D/1.png"));
     }
 
     @Test
@@ -99,7 +97,6 @@ public class AppTest {
 
     @Test
     public void testMD5() {
-
         System.out.println(DigestUtil.md5Hex("我是一只小鸟"));
 
     }
@@ -134,15 +131,15 @@ public class AppTest {
     }
 
     @Test
-    public void testGif() throws FileNotFoundException {
-        Captcha captcha = new SpecCaptcha(150, 40, 5);// png格式验证码
-        captcha.out(new FileOutputStream("D:/1.png"));
-        captcha = new GifCaptcha(150, 40, 5);//   gif格式动画验证码
-        ByteArrayOutputStream os = new ByteArrayOutputStream();
-        captcha.out(os);
-        byte[] bytes = os.toByteArray();
-        System.out.println(captcha.text());
-        System.out.println(Base64.encode(bytes));
+    public void testVerifUtil() {
+        GifCaptcha gif = VerifUtil.createGif(600, 150);
+        System.out.println(gif.toBase64());
+    }
+
+    @Test
+    public void testoperation() {
+        System.out.println(2 << 3);
+        System.out.println(8 >>> 1);
     }
 }
 

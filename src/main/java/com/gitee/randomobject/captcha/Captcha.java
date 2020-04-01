@@ -1,4 +1,4 @@
-package com.gitee.randomobject.giffactory;
+package com.gitee.randomobject.captcha;
 
 import java.awt.Color;
 import java.awt.Font;
@@ -90,6 +90,12 @@ public abstract class Captcha extends Randoms {
 	public abstract void out(OutputStream os);
 
 	/**
+	 * 输出为base64
+	 * @return
+	 */
+	public abstract String toBase64();
+
+	/**
 	 * 获取随机字符串
 	 * 
 	 * @return string
@@ -97,4 +103,6 @@ public abstract class Captcha extends Randoms {
 	public String text() {
 		return chars;
 	}
+
+
 }
