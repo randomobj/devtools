@@ -5,7 +5,7 @@
 
     <groupId>com.gitee.randomobject</groupId>
     <artifactId>devtools</artifactId>
-    <version>1.0.5</version>
+    <version>1.0.6</version>
 
     <name>devtools</name>
     <url>https://github.com/randomobj/devtools</url>
@@ -77,18 +77,18 @@
             <artifactId>poi</artifactId>
             <version>4.1.1</version>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/cn.hutool/hutool-all -->
+        <dependency>
+            <groupId>cn.hutool</groupId>
+            <artifactId>hutool-all</artifactId>
+            <version>5.3.0</version>
+        </dependency>
         <!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <version>1.18.10</version>
             <scope>provided</scope>
-        </dependency>
-        <!-- https://mvnrepository.com/artifact/cn.hutool/hutool-all -->
-        <dependency>
-            <groupId>cn.hutool</groupId>
-            <artifactId>hutool-all</artifactId>
-            <version>5.2.4</version>
         </dependency>
         <dependency>
             <groupId>junit</groupId>
@@ -113,7 +113,7 @@
         </plugins>
         <resources>
             <resource>
-                <directory>src/main/java/com/gitee/randomobject/entity</directory>
+                <directory>src/main/java/com/gitee/randomobject</directory>
                 <excludes>
                     <exclude>**/*.java</exclude>
                     <exclude>**/*.class</exclude>

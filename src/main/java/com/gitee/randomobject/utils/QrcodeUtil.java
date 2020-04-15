@@ -126,6 +126,11 @@ public final class QrcodeUtil {
         }
     }
 
+    /**
+     * 解析二维码
+     * @param picPath
+     * @return
+     */
     public static String readQrcode(String picPath) {
         try {
             MultiFormatReader formatReader = new MultiFormatReader();
