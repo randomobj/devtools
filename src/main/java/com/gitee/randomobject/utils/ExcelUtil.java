@@ -1,6 +1,5 @@
 package com.gitee.randomobject.utils;
 
-import com.alibaba.fastjson.JSONObject;
 import com.gitee.randomobject.annotation.Excel;
 import jxl.Cell;
 import jxl.Sheet;
@@ -11,12 +10,14 @@ import org.apache.poi.ss.util.CellRangeAddressList;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.io.*;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.OutputStream;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.concurrent.PriorityBlockingQueue;
 
 /**
  * excel工具类

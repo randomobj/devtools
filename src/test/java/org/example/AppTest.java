@@ -30,7 +30,6 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.CompletionService;
 
-import static org.junit.Assert.assertTrue;
 
 /**
  * Unit test for simple App.
