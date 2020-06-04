@@ -2,10 +2,6 @@ package com.gitee.randomobject.captcha;
 import java.io.IOException;
 import java.io.OutputStream;
 
-/**
- * @author: wuhongjun
- * @version:1.0
- */
 public class Encoder
 {
     private static final int EOF = -1;

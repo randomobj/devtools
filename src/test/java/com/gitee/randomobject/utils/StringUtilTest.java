@@ -1,15 +1,17 @@
 package com.gitee.randomobject.utils;
 
 import cn.hutool.http.HttpUtil;
+import com.gitee.randomobject.captcha.GifCaptcha;
+import com.gitee.randomobject.captcha.SpecCaptcha;
+import com.gitee.randomobject.captcha.VerifUtil;
 import com.sun.xml.internal.messaging.saaj.util.ByteInputStream;
 import org.junit.Test;
 
 import java.io.*;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.Base64;
 import java.util.Scanner;
-
-import static org.junit.Assert.*;
 
 public class StringUtilTest {
 
@@ -31,5 +33,20 @@ public class StringUtilTest {
 
         ByteArrayInputStream byteArrayInputStream = new ByteInputStream();
         ObjectInputStream objectInputStream = new ObjectInputStream(byteArrayInputStream);
+        objectInputStream.close();
+    }
+
+
+    @Test
+    public void createGif() throws IOException {
+
+//        GifCaptcha gif = VerifUtil.createGif();
+        FileOutputStream os = new FileOutputStream(new File("D:/test.png"));
+//        gif.out(os);
+        SpecCaptcha png = VerifUtil.createPng();
+        String s = png.toBase64();
+        byte[] decode = Base64.getDecoder().decode(s);
+        os.write(decode);
+        System.out.println(s);
     }
 }

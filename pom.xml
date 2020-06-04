@@ -184,7 +184,7 @@
                 </plugins>
             </build>
 
-            <!--中央仓库地址-->
+            <!--中央仓库地址 自动化部署-->
             <distributionManagement>
                 <snapshotRepository>
                     <id>snapshots</id>
