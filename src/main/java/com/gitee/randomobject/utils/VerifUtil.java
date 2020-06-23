@@ -1,6 +1,8 @@
-package com.gitee.randomobject.captcha;
+package com.gitee.randomobject.utils;
 
 import cn.hutool.core.codec.Base64;
+import com.gitee.randomobject.captcha.GifCaptcha;
+import com.gitee.randomobject.captcha.SpecCaptcha;
 
 import java.io.ByteArrayOutputStream;
 
@@ -10,8 +12,7 @@ import java.io.ByteArrayOutputStream;
 public final class VerifUtil {
 
 
-    private VerifUtil() {
-    }
+    private VerifUtil() {}
 
     /**
      * 得到gif生成器 默认宽度140，高度50
