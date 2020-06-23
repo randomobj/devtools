@@ -1,6 +1,8 @@
-package com.gitee.randomobject.captcha;
+package com.gitee.randomobject.utils;
 
 import cn.hutool.core.codec.Base64;
+import com.gitee.randomobject.captcha.GifCaptcha;
+import com.gitee.randomobject.captcha.SpecCaptcha;
 
 import java.io.ByteArrayOutputStream;
 

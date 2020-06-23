@@ -1,10 +1,7 @@
 package com.gitee.randomobject.utils;
 
 import cn.hutool.http.HttpUtil;
-import com.gitee.randomobject.captcha.GifCaptcha;
 import com.gitee.randomobject.captcha.SpecCaptcha;
-import com.gitee.randomobject.captcha.VerifUtil;
-import com.sun.xml.internal.messaging.saaj.util.ByteInputStream;
 import org.junit.Test;
 
 import java.io.*;
@@ -31,9 +28,6 @@ public class StringUtilTest {
         BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(file)));
         bufferedWriter.write(s);
 
-        ByteArrayInputStream byteArrayInputStream = new ByteInputStream();
-        ObjectInputStream objectInputStream = new ObjectInputStream(byteArrayInputStream);
-        objectInputStream.close();
     }
 
 
