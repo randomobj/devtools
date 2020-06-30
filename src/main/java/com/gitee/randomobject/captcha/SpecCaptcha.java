@@ -43,7 +43,7 @@ public class SpecCaptcha extends Captcha {
      */
     @Override
     public void out(OutputStream out) {
-        graphicsImage(alphas(), out);
+        graphicsImage(text, out);
     }
 
     @Override

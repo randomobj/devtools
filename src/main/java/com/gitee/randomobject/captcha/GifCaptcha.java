@@ -16,6 +16,7 @@ import java.io.OutputStream;
  */
 public class GifCaptcha extends Captcha {
     public GifCaptcha() {
+
     }
 
     public GifCaptcha(int width, int height) {
@@ -43,13 +44,12 @@ public class GifCaptcha extends Captcha {
             gifEncoder.setDelay(100);
             gifEncoder.setRepeat(0);
             BufferedImage frame;
-            char[] rands = alphas();
             Color fontcolor[] = new Color[len];
             for (int i = 0; i < len; i++) {
                 fontcolor[i] = new Color(20 + num(110), 20 + num(110), 20 + num(110));
             }
             for (int i = 0; i < len; i++) {
-                frame = graphicsImage(fontcolor, rands, i);
+                frame = graphicsImage(fontcolor, text, i);
                 gifEncoder.addFrame(frame);
                 frame.flush();
             }
