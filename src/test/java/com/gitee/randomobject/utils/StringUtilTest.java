@@ -3,8 +3,10 @@ package com.gitee.randomobject.utils;
 import cn.hutool.http.HttpUtil;
 import com.gitee.randomobject.captcha.SpecCaptcha;
 import org.junit.Test;
+import sun.misc.Regexp;
 
 import java.io.*;
+import java.nio.charset.Charset;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Base64;
@@ -42,5 +44,30 @@ public class StringUtilTest {
         byte[] decode = Base64.getDecoder().decode(s);
         os.write(decode);
         System.out.println(s);
+    }
+
+    @Test
+    public void testThread(){
+
+        String string = "/[^0-9\\.eE\\-]/g";
+
+        Regexp regexp = new Regexp(string);
+
+        String testStr = "0.00493388";
+
+        System.out.println(testStr.replaceAll(string, "xx"));
+
+
+    }
+
+    @Test
+    public void jumpUrl(){
+
+        String s = HttpUtil.get("https://zh.coinmill.com/BTC_calculator.html#BTC=4", Charset.forName("utf-8"));
+
+
+
+        System.out.println(s);
+
     }
 }
