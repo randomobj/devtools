@@ -11,23 +11,18 @@ import java.io.OutputStream;
  */
 public abstract class Captcha extends Randoms {
 	protected Font font = new Font("Verdana", Font.ITALIC | Font.BOLD, 28); // 字体
-	protected int len = 5; // 验证码随机字符长度
+	protected int len = 6; // 验证码随机字符长度
 	protected int width = 150; // 验证码显示跨度
 	protected int height = 40; // 验证码显示高度
-	private String chars = null; // 随机字符串
+	protected String chars = null; // 随机字符串
+	protected char [] text = null;
 
-	/**
-	 * 生成随机字符数组
-	 * 
-	 * @return 字符数组
-	 */
-	protected char[] alphas() {
-		char[] cs = new char[len];
+	public Captcha() {
+		text = new char[len];
 		for (int i = 0; i < len; i++) {
-			cs[i] = alpha();
+			text[i] = alpha();
 		}
-		chars = new String(cs);
-		return cs;
+		chars = new String(text);
 	}
 
 	public Font getFont() {

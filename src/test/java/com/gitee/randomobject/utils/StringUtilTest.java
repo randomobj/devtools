@@ -1,7 +1,7 @@
 package com.gitee.randomobject.utils;
 
 import cn.hutool.http.HttpUtil;
-import com.gitee.randomobject.captcha.SpecCaptcha;
+import com.gitee.randomobject.captcha.GifCaptcha;
 import org.junit.Test;
 import sun.misc.Regexp;
 
@@ -9,7 +9,6 @@ import java.io.*;
 import java.nio.charset.Charset;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.Base64;
 import java.util.Scanner;
 
 public class StringUtilTest {
@@ -36,14 +35,15 @@ public class StringUtilTest {
     @Test
     public void createGif() throws IOException {
 
-//        GifCaptcha gif = VerifUtil.createGif();
-        FileOutputStream os = new FileOutputStream(new File("D:/test.png"));
-//        gif.out(os);
-        SpecCaptcha png = VerifUtil.createPng();
-        String s = png.toBase64();
-        byte[] decode = Base64.getDecoder().decode(s);
-        os.write(decode);
-        System.out.println(s);
+        GifCaptcha gif = VerifUtil.createGif(166,166);
+        System.out.println(gif.text());
+        FileOutputStream os = new FileOutputStream(new File("D:/test.gif"));
+        gif.out(os);
+//        SpecCaptcha png = VerifUtil.createPng();
+//        String s = png.toBase64();
+//        byte[] decode = Base64.getDecoder().decode(s);
+//        os.write(decode);
+//        System.out.println(s);
     }
 
     @Test
@@ -64,8 +64,6 @@ public class StringUtilTest {
     public void jumpUrl(){
 
         String s = HttpUtil.get("https://zh.coinmill.com/BTC_calculator.html#BTC=4", Charset.forName("utf-8"));
-
-
 
         System.out.println(s);
 
