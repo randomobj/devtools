@@ -2,6 +2,7 @@ package com.gitee.randomobject.utils;
 
 import cn.hutool.http.HttpUtil;
 import com.gitee.randomobject.captcha.SpecCaptcha;
+import org.jsoup.Jsoup;
 import org.junit.Test;
 import sun.misc.Regexp;
 
@@ -47,7 +48,7 @@ public class StringUtilTest {
     }
 
     @Test
-    public void testThread(){
+    public void testThread() {
 
         String string = "/[^0-9\\.eE\\-]/g";
 
@@ -61,13 +62,12 @@ public class StringUtilTest {
     }
 
     @Test
-    public void jumpUrl(){
+    public void jumpUrl() throws IOException {
 
-        String s = HttpUtil.get("https://zh.coinmill.com/BTC_calculator.html#BTC=4", Charset.forName("utf-8"));
+        HttpUtil.get("https://zh.coinmill.com/BTC_calculator.html#BTC=4", Charset.forName("utf-8"));
 
-
-
-        System.out.println(s);
+        String body = Jsoup.connect("https://zh.coinmill.com/BTC_calculator.html#BTC=4").execute().body();
+        System.out.println(body);
 
     }
 }
