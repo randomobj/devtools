@@ -17,9 +17,9 @@ public final class StringUtil {
      */
     public static boolean checkEmpty(String str) {
         if (null == str || "".equalsIgnoreCase(str.replaceAll("\\s", ""))) {
-            return false;
+            return true;
         }
-        return true;
+        return false;
     }
 
     /**
