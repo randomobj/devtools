@@ -27,7 +27,7 @@ public class RSAUtil {
     private static final String DEFAULT_ALGORITHM_KEY = "RSA";
 
     /**
-     * 保存密钥对到指定的文件
+     * <p>保存密钥对到指定的文件</p>
      *  (k,v)->{public->PublicKey,private->PrivateKey}
      * @param keyPair        密钥对
      * @param publicKeyPath  公钥文件位置
@@ -70,8 +70,7 @@ public class RSAUtil {
 
 
     /**
-     * 获取自定位置的文件内容
-     *
+     * 获取自定位置的文件内容并返回字节数组
      * @param path 文件地址
      * @return byte [] 字节数组
      */
@@ -85,7 +84,7 @@ public class RSAUtil {
     }
 
     /**
-     * 获取自定位置的文件内容
+     * 获取自定位置的文件内容并返回字符串
      * @param path 文件地址
      * @return byte [] 字节数组
      */
@@ -181,6 +180,7 @@ public class RSAUtil {
     /**
      * 创建密钥对
      * @param keySize 密钥长度
+     * @param secret 密文
      * @return KeyPair 密钥对
      */
     public static KeyPair createKeyPair(String secret, int keySize) throws NoSuchAlgorithmException, UnsupportedEncodingException {

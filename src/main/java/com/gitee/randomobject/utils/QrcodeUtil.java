@@ -211,4 +211,13 @@ public final class QrcodeUtil {
         return null;
     }
 
+
+    public static void main(String[] args) {
+
+        String s = readQrcode("C:\\Users\\nikol\\Pictures\\抖音\\解析地址.png");
+        System.out.println(s);
+
+
+    }
+
 }

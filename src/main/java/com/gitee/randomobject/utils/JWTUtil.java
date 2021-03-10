@@ -22,7 +22,6 @@ public class JWTUtil {
 
     /**
      * 私钥加密token
-     *
      * @param userInfo   待加密数据，即载荷中的数据
      * @param privateKey 私钥
      * @param expire     过期时间 /分钟
@@ -41,7 +40,6 @@ public class JWTUtil {
 
     /**
      * 公钥解密token
-     *
      * @param token     请求体中的token
      * @param publicKey 公钥
      * @return Jws<Claims>
@@ -53,7 +51,6 @@ public class JWTUtil {
 
     /**
      * 获取token中的(returnInfo)返回信息
-     *
      * @param token     用户请求中的令牌
      * @param publicKey 公钥
      * @param classType 返回class类型
@@ -75,7 +72,6 @@ public class JWTUtil {
 
     /**
      * 获取token中的载荷信息，不返回（returnInfo）返回信息
-     *
      * @param token     用户请求中的令牌
      * @param publicKey 公钥
      * @param <T>
