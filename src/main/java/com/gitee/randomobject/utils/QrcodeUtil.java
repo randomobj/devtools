@@ -30,6 +30,9 @@ public final class QrcodeUtil {
     private static final int Qrcode_Width = 360;//默认二维码宽高度为360的正方形
     private static final int Logo_Size = 60;//默认二维码宽高度为360的正方形
 
+    private QrcodeUtil() {
+    }
+
     /**
      * 创建二维码
      *
